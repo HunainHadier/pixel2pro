@@ -64,12 +64,12 @@ export const ToolsCarousel: React.FC = () => {
     <section className="relative overflow-hidden bg-white py-8" aria-label="Tools & Platforms">
       <div className="container mx-auto">
         <h2 className="mb-6 text-center text-2xl font-bold text-slate-800">Tools & Platforms</h2>
-        <div className="tools-marquee-wrapper">
-          <div className="tools-marquee-track">
-            {renderLogos("a")}
-            {renderLogos("b")}
-          </div>
-        </div>
+<div className="tools-marquee-wrapper">
+  <div className="tools-marquee-track">
+    {renderLogos("a")}
+    {renderLogos("b")}
+  </div>
+</div>
       </div>
     </section>
   );

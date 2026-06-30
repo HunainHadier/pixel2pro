@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, BadgeCheck, Building2, Network, Search, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
@@ -42,7 +42,7 @@ const Index = () => {
   return (
     <Layout>
       <section className="relative overflow-visible border-b border-slate-200 bg-white">
-        <div className="container grid items-center gap-8 py-8 md:min-h-[620px] md:grid-cols-[0.95fr_1.05fr] md:py-12">
+        <div className="container grid grid-cols-1 items-center gap-8 py-8 md:min-h-[620px] md:grid-cols-[0.95fr_1.05fr] md:py-12">
           <div className="space-y-6">
             <div className="space-y-4">
               <h1 className="max-w-3xl text-4xl font-bold leading-[1.02] tracking-normal sm:text-5xl md:text-6xl lg:text-7xl">
