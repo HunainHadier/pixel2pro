@@ -49,7 +49,7 @@ const Courses = () => {
   return (
     <Layout>
       <section className="border-b border-slate-200 bg-slate-50 py-8 md:py-14">
-        <div className="container grid items-center gap-8 lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="container grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Programs</p>
             <h1 className="mt-3 text-4xl font-bold md:text-6xl">Find the track that fits your next move.</h1>
@@ -57,7 +57,7 @@ const Courses = () => {
               Browse Pixel2Pro's focused learning programs. Each program includes live classes, practical assignments, and portfolio outcomes.
             </p>
           </div>
-          <HeroCarousel className="h-[280px] shadow-xl sm:h-[340px] md:h-[390px]" />
+          <HeroCarousel className="h-[330px] shadow-2xl sm:h-[390px] md:h-[480px]" />
         </div>
       </section>
 

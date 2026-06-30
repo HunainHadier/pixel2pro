@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+﻿import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, CalendarDays, Check, Clock3, Layers3, PlayCircle, TrendingUp } from "lucide-react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -49,8 +49,18 @@ const CourseDetail = () => {
               ))}
             </div>
           </div>
-          <div className="flex overflow-hidden rounded-lg border border-white/15 bg-white">
-            <img src={course.image} alt={course.programName} className="aspect-[4/3] h-full w-full object-contain grayscale" />
+          <div className="rounded-[30px] border border-slate-200 bg-white p-3 shadow-[0_18px_50px_rgba(15,23,42,0.08)] sm:p-4">
+            <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-white">
+              <div className="flex aspect-[4/3] items-center justify-center bg-white p-5 sm:p-6 md:p-7">
+                <div className="flex h-full w-full items-center justify-center rounded-[20px] bg-white p-4 shadow-[0_8px_24px_rgba(15,23,42,0.05)] ring-1 ring-slate-200/70 sm:p-5 md:p-6">
+                  <img
+                    src={course.image}
+                    alt={course.programName}
+                    className="max-h-[86%] max-w-[86%] object-contain object-center"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

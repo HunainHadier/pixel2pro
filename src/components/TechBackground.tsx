@@ -26,38 +26,35 @@ const TechBackground = () => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Dynamic node configuration based on screen width
-    const totalCount = Math.min(65, Math.floor((width * height) / 18000));
+    const totalCount = Math.min(78, Math.floor((width * height) / 15000));
     const nodes: CanvasNode[] = [];
 
     const educationalSymbols = [
-      "</>", "{}", "[]", "( )", "f()", "JS", "Py", "C#", "SQL", "AI", 
-      "🎓", "📚", "1", "0", "++", "=>", "Code", "Web"
+      "</>", "{}", "[]", "( )", "f()", "JS", "Py", "C#", "SQL", "AI",
+      "??", "??", "1", "0", "++", "=>", "Code", "Web"
     ];
 
-    // Initialize nodes with a mix of connectivity dots and floating symbols
     for (let i = 0; i < totalCount; i++) {
-      const isSymbol = Math.random() < 0.45; // 45% are symbols, 55% are network dots
+      const isSymbol = Math.random() < 0.48;
       nodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.3, // slow motion
-        vy: (Math.random() - 0.5) * 0.3,
-        radius: Math.random() * 1.5 + 1.2,
+        vx: (Math.random() - 0.5) * 0.38,
+        vy: (Math.random() - 0.5) * 0.38,
+        radius: Math.random() * 1.8 + 1.25,
         type: isSymbol ? "symbol" : "dot",
         char: isSymbol ? educationalSymbols[Math.floor(Math.random() * educationalSymbols.length)] : undefined,
-        size: isSymbol ? Math.floor(Math.random() * 5) + 11 : undefined, // 11px to 15px text
-        opacity: Math.random() * 0.2 + 0.15, // between 15% and 35% opacity
+        size: isSymbol ? Math.floor(Math.random() * 6) + 12 : undefined,
+        opacity: Math.random() * 0.28 + 0.2,
       });
     }
 
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Draw Grid Lines (Subtle blueprint grid background)
-      ctx.strokeStyle = "rgba(226, 232, 240, 0.12)"; // Very light slate-200 grid
+      ctx.strokeStyle = "rgba(148, 163, 184, 0.16)";
       ctx.lineWidth = 1;
-      const gridSpacing = 85;
+      const gridSpacing = 78;
 
       for (let x = 0; x < width; x += gridSpacing) {
         ctx.beginPath();
@@ -72,50 +69,42 @@ const TechBackground = () => {
         ctx.stroke();
       }
 
-      // 2. Update and Draw Tech/Education Nodes
       for (let i = 0; i < nodes.length; i++) {
         const node = nodes[i];
 
-        // Move nodes
         node.x += node.vx;
         node.y += node.vy;
 
-        // Bounce off boundaries with a small padding
-        const margin = 20;
+        const margin = 24;
         if (node.x < -margin) node.x = width + margin;
         if (node.x > width + margin) node.x = -margin;
         if (node.y < -margin) node.y = height + margin;
         if (node.y > height + margin) node.y = -margin;
 
-        // Draw node
         if (node.type === "symbol" && node.char && node.size) {
-          ctx.font = `600 ${node.size}px Inter, "Segoe UI", sans-serif`;
-          ctx.fillStyle = `rgba(100, 116, 139, ${node.opacity})`;
+          ctx.font = `700 ${node.size}px Inter, "Segoe UI", sans-serif`;
+          ctx.fillStyle = `rgba(51, 65, 85, ${node.opacity})`;
           ctx.fillText(node.char, node.x, node.y);
         } else {
           ctx.beginPath();
           ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(100, 116, 139, ${node.opacity})`;
+          ctx.fillStyle = `rgba(51, 65, 85, ${node.opacity})`;
           ctx.fill();
         }
 
-        // Draw connection lines between nearby nodes (type doesn't restrict connection)
         for (let j = i + 1; j < nodes.length; j++) {
           const other = nodes[j];
           const dx = node.x - other.x;
           const dy = node.y - other.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          // Connection threshold (130px)
-          if (distance < 130) {
+          if (distance < 145) {
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(other.x, other.y);
-            
-            // Connection line opacity decreases with distance
-            const lineOpacity = (1 - distance / 130) * 0.12;
-            ctx.strokeStyle = `rgba(148, 163, 184, ${lineOpacity})`;
-            ctx.lineWidth = 0.7;
+            const lineOpacity = (1 - distance / 145) * 0.18;
+            ctx.strokeStyle = `rgba(71, 85, 105, ${lineOpacity})`;
+            ctx.lineWidth = 0.9;
             ctx.stroke();
           }
         }
@@ -124,7 +113,6 @@ const TechBackground = () => {
       animationFrameId = requestAnimationFrame(draw);
     };
 
-    // Resize handler
     const handleResize = () => {
       if (!canvas) return;
       width = canvas.width = window.innerWidth;
@@ -143,7 +131,7 @@ const TechBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-0 select-none opacity-45"
+      className="pointer-events-none fixed inset-0 z-0 select-none opacity-70"
       style={{ mixBlendMode: "multiply" }}
     />
   );

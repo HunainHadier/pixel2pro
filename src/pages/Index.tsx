@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, BadgeCheck, Building2, Network, Search, ShieldCheck } from "lucide-react";
 import Layout from "@/components/Layout";
@@ -46,7 +46,7 @@ const Index = () => {
           <div className="space-y-6">
             <div className="space-y-4">
               <h1 className="max-w-3xl text-4xl font-bold leading-[1.02] tracking-normal sm:text-5xl md:text-6xl lg:text-7xl">
-                Pixel Today's, Pros Tomorrow
+                Pixel Today Pro Tomorrow
               </h1>
               <p className="max-w-xl text-base leading-7 text-slate-600 md:text-lg">
                 Pixel2Pro, powered by Hakamtechsol, turns focused learners into job-ready builders through cohort-based tracks, verified credentials, and portfolio-grade outcomes with guaranteed internship opportunities.
@@ -80,7 +80,7 @@ const Index = () => {
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 h-10 rounded-full bg-black px-5 text-sm font-semibold text-white hover:bg-slate-800 transition"
+                className="absolute right-2 top-1/2 -translate-y-1/2 h-10 rounded-full bg-black px-5 text-sm font-semibold text-white hover:bg-slate-800 transition z-10"
               >
                 Search
               </button>
@@ -92,7 +92,7 @@ const Index = () => {
                     <button
                       key={course.id}
                       type="button"
-                      onClick={() => navigate(`/courses/${course.id}`)}
+                      onMouseDown={(e) => { e.preventDefault(); navigate(`/courses/${course.id}`); }}
                       className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left hover:bg-slate-50 transition"
                     >
                       <div className="pr-4">
@@ -133,7 +133,7 @@ const Index = () => {
           <div className="mb-8 flex flex-col gap-3 md:mb-10 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-xs font-bold uppercase tracking-wider text-slate-500">Learning Programs</p>
-              <h2 className="mt-2 text-3xl font-bold md:text-5xl">Choose your next operating system.</h2>
+              <h2 className="mt-2 text-3xl font-bold md:text-5xl">Choose your next learning path.</h2>
             </div>
             <Link to="/courses" className="text-sm font-bold text-black underline underline-offset-4">
               View programs
@@ -175,3 +175,7 @@ const Index = () => {
 };
 
 export default Index;
+
+
+
+

@@ -19,6 +19,7 @@ const HeroCarousel = ({ className = "" }: { className?: string }) => {
 
   const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
     if (touchStart === null) return;
+
     const distance = touchStart - event.changedTouches[0].clientX;
     if (Math.abs(distance) > 40) move(distance > 0 ? 1 : -1);
     setTouchStart(null);
@@ -31,35 +32,39 @@ const HeroCarousel = ({ className = "" }: { className?: string }) => {
 
   return (
     <div
-      className={`group relative overflow-hidden rounded-lg border border-slate-200 bg-white ${className}`}
+      className={`group relative isolate overflow-hidden rounded-[28px] border border-slate-200 bg-white p-1.5 shadow-[0_10px_28px_rgba(15,23,42,0.08)] sm:p-2 ${className}`}
       onTouchStart={(event) => setTouchStart(event.touches[0].clientX)}
       onTouchEnd={handleTouchEnd}
+      aria-label="Pixel2Pro highlight carousel"
     >
-      <div
-        className="flex h-full transition-transform duration-700 ease-out"
-        style={{ transform: `translateX(-${active * 100}%)` }}
-      >
-        {banners.map((banner, index) => (
-          <div key={banner} className="relative flex h-full min-w-full items-center justify-center bg-white">
-            <img
-              src={banner}
-              alt={`Pixel2Pro learning banner ${index + 1}`}
-              className="h-full w-full object-contain grayscale"
-              draggable={false}
-            />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/55 to-transparent" />
-          </div>
-        ))}
+      <div className="relative h-full overflow-hidden rounded-[24px] bg-white">
+        <div
+          className="flex h-full transition-transform duration-700 ease-out"
+          style={{ transform: `translateX(-${active * 100}%)` }}
+        >
+          {banners.map((banner) => (
+            <div key={banner} className="relative min-w-full">
+              <div className="flex h-full min-h-[280px] items-center justify-center p-2 sm:min-h-[340px] sm:p-3 md:min-h-[420px] md:p-4 lg:p-5">
+                <img
+                  src={banner}
+                  alt="Pixel2Pro learning banner"
+                  className="h-full w-full max-h-[100%] max-w-[100%] object-contain object-center"
+                  draggable={false}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+      <div className="absolute bottom-3 left-3 right-3 z-20 flex items-center justify-between gap-4 sm:bottom-4 sm:left-4 sm:right-4">
         <div className="flex gap-1.5">
           {banners.map((banner, index) => (
             <button
               key={banner}
               type="button"
               onClick={() => setActive(index)}
-              className={`h-1.5 rounded-full transition-all ${active === index ? "w-8 bg-white" : "w-2 bg-white/45"}`}
+              className={`h-1.5 rounded-full transition-all ${active === index ? "w-8 bg-slate-900" : "w-2 bg-slate-400/40"}`}
               aria-label={`Show banner ${index + 1}`}
             />
           ))}
@@ -69,7 +74,7 @@ const HeroCarousel = ({ className = "" }: { className?: string }) => {
             type="button"
             size="icon"
             variant="secondary"
-            className="h-9 w-9 rounded-full bg-white text-black opacity-0 transition group-hover:opacity-100"
+            className="h-10 w-10 rounded-full border border-slate-200 bg-white text-black shadow-sm opacity-0 transition group-hover:opacity-100 hover:bg-slate-100"
             onClick={() => move(-1)}
             aria-label="Previous banner"
           >
@@ -79,7 +84,7 @@ const HeroCarousel = ({ className = "" }: { className?: string }) => {
             type="button"
             size="icon"
             variant="secondary"
-            className="h-9 w-9 rounded-full bg-white text-black opacity-0 transition group-hover:opacity-100"
+            className="h-10 w-10 rounded-full border border-slate-200 bg-white text-black shadow-sm opacity-0 transition group-hover:opacity-100 hover:bg-slate-100"
             onClick={() => move(1)}
             aria-label="Next banner"
           >
