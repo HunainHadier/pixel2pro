@@ -31,8 +31,12 @@ CREATE TABLE IF NOT EXISTS contacts (
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     name TEXT NOT NULL,
     email TEXT NOT NULL,
+    phone TEXT,
     message TEXT NOT NULL
 );
+
+-- If the contacts table already exists, run this to add the new phone field safely.
+ALTER TABLE contacts ADD COLUMN IF NOT EXISTS phone TEXT;
 
 -- Disable RLS to allow public form contact submissions
 ALTER TABLE contacts DISABLE ROW LEVEL SECURITY;

@@ -1,7 +1,7 @@
 import { Linkedin } from "lucide-react";
 import Layout from "@/components/Layout";
-import hunainHaiderImg from "@/assets/hunain-haider.png";
-import arbazImg from "@/assets/team-arbaz.png";
+import hunainHaiderImg from "@/assets/hunain-haider-optimized.jpg";
+import arbazImg from "@/assets/team-arbaz-optimized.jpg";
 
 type FacultyMember = {
   name: string;
@@ -87,6 +87,10 @@ const Faculty = () => (
                   <img
                     src={mentor.image}
                     alt={mentor.name}
+                    loading="lazy"
+                    decoding="async"
+                    width={392}
+                    height={524}
                     className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (

@@ -25,7 +25,7 @@ const sections = [
   },
   {
     title: "Your Choices",
-    text: "You may request corrections, updates, or deletion of personal information by contacting support@pixel2pro.com.",
+    text: "You may request corrections, updates, or deletion of personal information by contacting info@pixel2pro.com.",
   },
 ];
 

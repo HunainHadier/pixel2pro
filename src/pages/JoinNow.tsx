@@ -181,12 +181,26 @@ const JoinNow = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
             {/* Enrollment Benefits Info */}
-            <div className="space-y-6 lg:col-span-1">
+            <aside className="grid gap-4 lg:col-span-1 lg:sticky lg:top-24">
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                <h3 className="font-bold text-slate-900 mb-4 text-lg">Contact Us</h3>
+                <div className="space-y-3 text-sm">
+                  <a href="mailto:info@pixel2pro.com" className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-slate-700 transition hover:border-slate-300 hover:bg-white hover:text-black">
+                    <Mail size={16} className="shrink-0" />
+                    <span className="break-all">info@pixel2pro.com</span>
+                  </a>
+                  <a href="tel:+923092271214" className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-slate-700 transition hover:border-slate-300 hover:bg-white hover:text-black">
+                    <Phone size={16} className="shrink-0" />
+                    <span>+92 309 227 1214</span>
+                  </a>
+                </div>
+              </div>
+
               <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
                 <h3 className="font-bold text-slate-900 mb-4 text-lg">Your Enrollment Includes</h3>
-                <ul className="space-y-4">
+                <ul className="space-y-3">
                   {[
                     "Cohort-based active learning environment",
                     "Direct access to industry mentors & office hours",
@@ -218,7 +232,7 @@ const JoinNow = () => {
                   Your seat configuration and setup details will be provided at zero cost today. Paid credentials verification and cohort access fee will be verified during the WhatsApp onboarding call.
                 </p>
               </div>
-            </div>
+            </aside>
 
             {/* Redesigned Registration Form */}
             <div className="lg:col-span-2">

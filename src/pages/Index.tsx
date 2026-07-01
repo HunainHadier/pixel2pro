@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowRight, BadgeCheck, Building2, Network, Search, ShieldCheck } from "lucide-react";
+import { ArrowRight, BadgeCheck, Building2, Network, Search } from "lucide-react";
 import Layout from "@/components/Layout";
 import CourseCard from "@/components/CourseCard";
 import HeroCarousel from "@/components/HeroCarousel";
@@ -13,7 +13,6 @@ const trustStats = [
   { icon: Building2, value: "24+", label: "Academic and industry learning partners" },
   { icon: BadgeCheck, value: "100%", label: "Verification-ready certificate mapping" },
   { icon: Network, value: "3,800+", label: "Professional alumni and peer network" },
-  { icon: ShieldCheck, value: "Board", label: "Profile vetting and credential checks" },
 ];
 
 const Index = () => {
@@ -117,7 +116,7 @@ const Index = () => {
       </section>
 
       <section className="border-b border-slate-200 bg-slate-50 py-8 md:py-12">
-        <div className="container grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="container grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {trustStats.map((stat) => (
             <div key={stat.label} className="rounded-lg border border-slate-200 bg-white p-5">
               <stat.icon size={22} />

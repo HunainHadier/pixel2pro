@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Facebook, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import Logo from "./Logo";
 import { courses } from "@/data/courses";
@@ -140,12 +140,14 @@ const Footer = () => {
             <Link to="/privacy" className="transition-colors hover:text-white">
               Privacy Policy
             </Link>
+            {/*
             <Link to="/refund-policy" className="transition-colors hover:text-white">
               Refund Policy
             </Link>
             <Link to="/vetting-terms" className="transition-colors hover:text-white">
               Hakamtechsol Vetting Board Terms
             </Link>
+            */}
           </div>
         </div>
       </div>

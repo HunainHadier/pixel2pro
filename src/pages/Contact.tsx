@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ const Contact = () => {
     const formData = new FormData(formEl);
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
     const message = formData.get("message") as string;
 
     setLoading(true);
@@ -23,6 +24,7 @@ const Contact = () => {
       await insertRecord("contacts", {
         name: name.trim(),
         email: email.trim(),
+        phone: phone.trim(),
         message: message.trim(),
       });
       toast.success("Message sent. Our support team will reply soon.");
@@ -59,6 +61,10 @@ const Contact = () => {
                 <span>Email</span>
               </label>
               <label className="floating-field">
+                <Input required name="phone" type="tel" placeholder=" " />
+                <span>Phone</span>
+              </label>
+              <label className="floating-field">
                 <Textarea required name="message" placeholder=" " rows={6} />
                 <span>Message</span>
               </label>
@@ -70,7 +76,7 @@ const Contact = () => {
 
           <div className="space-y-4">
             {[
-              { icon: Mail, title: "Email", text: "support@pixel2pro.com", href: "mailto:support@pixel2pro.com" },
+              { icon: Mail, title: "Email", text: "info@pixel2pro.com", href: "mailto:info@pixel2pro.com" },
               { icon: Phone, title: "Admissions", text: "+92 309 227 1214", href: "tel:+923092271214" },
               { icon: MapPin, title: "Location", text: "UF-114, Kolachi IT Park, Gulshan E Jamal, Rashid Minhas Road, Karachi, Sindh, Pakistan" },
               { icon: MessageCircle, title: "Response Time", text: "Usually within one business day" },
